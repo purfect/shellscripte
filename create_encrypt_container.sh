@@ -15,6 +15,8 @@ fi
 ######[ Parameter ]######
 
 CONTAINERSIZE=25  #Größe des Container's in MB
+USERNAME="rasputin"
+
 RANDOMNAME=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1)
 FREELOOP=$(losetup -f)
 DATENOW=container_$(date +"%m-%d-%y-%T")
@@ -38,7 +40,7 @@ then
     df -h | grep $DATENOW 
     echo ""
     echo "[*] Passe Schreibrechte für den Container an"
-    chown -R rasputin /mnt/$RANDOMNAME  
+    chown -R $USERNAME /mnt/$RANDOMNAME  
     echo "[*] FERTIG!"
 
 else
