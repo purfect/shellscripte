@@ -1,5 +1,10 @@
 #!/bin/bash
-
+#
+# Dieses Script erstellt verschlüsselte 
+# Container mit zufällig generierten Namen, 
+# formatiert diese zu einem ext4-FS und
+# bindet den Container unterhalb von /mnt ein 
+#
 ######[ Root-Check ]######
 if [ "$(id -u)" != "0" ]
 then
@@ -26,13 +31,14 @@ then
     cryptsetup luksOpen $RANDOMNAME $DATENOW 
     echo "[*] Formatiere Coantainer"
     mkfs.ext4 -j /dev/mapper/$DATENOW > /dev/null 2>&1 
+    mkdir /mnt/$RANDOMNAME 
     echo "[*] Hänge Container in das Dateisystem" 
-    mount -t ext4 /dev/mapper/$DATENOW /mnt 
+    mount -t ext4 /dev/mapper/$DATENOW /mnt/$RANDOMNAME  
     echo "[*] Container erfolgreich eingehangen:"
     df -h | grep $DATENOW 
     echo ""
     echo "[*] Passe Schreibrechte für den Container an"
-    chown -R rasputin /mnt 
+    chown -R rasputin /mnt/$RANDOMNAME  
     echo "[*] FERTIG!"
 
 else
