@@ -1,5 +1,8 @@
 #!/bin/bash
-
+#
+# Dieses Script erstellt eine Swap-Datei 
+# und bindet diese in das System ein 
+#
 ###[ Config ]###
 VERSION="0.1"
 SWAPFILENAME="swapfile"
