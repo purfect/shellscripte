@@ -1,9 +1,10 @@
 #!/bin/bash
 #
 # Baut Selbstzerstörung (Nuke) in Kali-Linux ein
-#
+# 
 # mehr Infos unter: https://www.kali.org/tutorials/nuke-kali-linux-luks/
 #
+# Author: rasputin
 VERSION=0.1
 
 LUKS_HEADER_BACKUP="luksheader.back"
